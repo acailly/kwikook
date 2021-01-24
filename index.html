@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<!-- TODO -->
+<!-- Ajouter les quantités pour 4 pers -->
+<!-- Ajouter les ingrédients -->
+<!-- Ajouter les exemples de recettes (+ commmentaires / ajustements / avis) -->
+<!-- Ajouter le matching auto avec les exemples de recettes -->
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🥘 Kwikook</title>
+    <style>
+      :root {
+        /* borders */
+        --border-radius: 5px;
+        --border-size: 2px;
+        /* colors */
+        --primary-color: #4a4a4a;
+        --primary-color-light: #f1f1f1;
+        --secondary-color: white;
+        /* font */
+        --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+        --font-size: 1rem;
+        /* spacing */
+        --input-spacing-horizontal: 1rem;
+        --input-spacing-vertical: 0.5rem;
+        /* transition */
+        --transition: 0.25s ease-in-out;
+      }
+
+      html {
+        font-family: var(--font-family);
+      }
+
+      body {
+        max-width: 38em;
+        margin: auto;
+      }
+
+      /**
+   * Form
+   **/
+      button {
+        background: none;
+        color: var(--primary-color);
+        font-size: var(--font-size);
+      }
+
+      button:hover {
+        background-color: var(--primary-color);
+        color: var(--secondary-color);
+      }
+
+      button,
+      input,
+      select,
+      textarea {
+        border: solid var(--border-size) var(--primary-color);
+        border-radius: var(--border-radius);
+        padding: var(--input-spacing-vertical) var(--input-spacing-horizontal);
+        transition: background-color var(--transition),
+          border-color var(--transition), color var(--transition),
+          box-shadow var(--transition);
+      }
+
+      /**
+   * Text
+   **/
+      blockquote {
+        color: var(--primary-color);
+        background-color: var(--primary-color-light);
+        border-left: 5px solid var(--primary-color);
+        margin: 0 0 2.5rem 0;
+        padding: 0.75rem 0.75rem 0.75rem 1rem;
+      }
+
+      code {
+        color: var(--primary-color);
+        background-color: var(--primary-color-light);
+        margin: 0 0 2.5rem 0;
+        padding: 0.75rem;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        line-height: 1.1;
+        font-family: var(--font-family);
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-top: 3rem;
+        margin-bottom: 1.5rem;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        -ms-word-break: break-all;
+        word-break: break-word;
+      }
+
+      h1 {
+        font-size: 2.25rem;
+      }
+
+      h2 {
+        font-size: 2rem;
+      }
+
+      h3 {
+        font-size: 1.75rem;
+      }
+
+      h4 {
+        font-size: 1.5rem;
+      }
+
+      h5 {
+        font-size: 1.25rem;
+      }
+
+      h6 {
+        font-size: 1rem;
+      }
+
+      kbd {
+        color: var(--primary-color);
+        background-color: var(--primary-color-light);
+        border-radius: var(--border-radius);
+        border: 1px solid var(--primary-color);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+          0 2px 0 0 rgba(255, 255, 255, 0.7) inset;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: 700;
+        line-height: 1;
+        padding: 0.25rem;
+        white-space: nowrap;
+      }
+
+      pre:after {
+        content: attr(text);
+        position: absolute;
+        top: 22px;
+        right: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Liste des ingrédients -->
+    <datalist id="liste-matiere-grasse">
+      <option>Huile olive (2 cuillère à soupe)</option>
+    </datalist>
+    <datalist id="liste-feculent">
+      <option>Pâtes (300g)</option>
+      <option>Quinoa (250g)</option>
+      <option>Riz (250g)</option>
+      <option>Pommes de terre (8)</option>
+      <option>Nouilles chinoises (TODO)</option>
+      <option>Patates douces (2 grosses, 1kg - 1,2kg)</option>
+    </datalist>
+    <datalist id="liste-legumineuse-ou-viande">
+      <option>Saumon fumé</option>
+      <option>Haricots rouges</option>
+      <option>Oeufs</option>
+      <option>Dés de jambon</option>
+      <option>Sauté de porc</option>
+      <option>Lardons</option>
+      <option>Lentilles corail</option>
+      <option>Pois chiche</option>
+    </datalist>
+    <datalist id="liste-legume-ou-fruit">
+      <option>Tomates concassées</option>
+      <option>Tomates cerises</option>
+      <option>Courgette</option>
+      <option>Maïs</option>
+      <option>Petits pois</option>
+      <option>Carottes</option>
+      <option>Pommes</option>
+      <option>Pruneaux</option>
+      <option>Poire</option>
+    </datalist>
+    <datalist id="liste-liant">
+      <option>Lait</option>
+      <option>Yaourt brassé</option>
+      <option>Lait de coco</option>
+      <option>Crème fraiche</option>
+      <option>Cidre</option>
+    </datalist>
+    <datalist id="liste-eau">
+      <option>Pas d'eau</option>
+      <option>100ml d'eau</option>
+      <option>150ml d'eau</option>
+      <option>200ml d'eau</option>
+      <option>250ml d'eau</option>
+      <option>300ml d'eau</option>
+      <option>350ml d'eau</option>
+      <option>400ml d'eau</option>
+      <option>450ml d'eau</option>
+      <option>500ml d'eau</option>
+      <option>550ml d'eau</option>
+      <option>600ml d'eau</option>
+      <option>650ml d'eau</option>
+      <option>750ml d'eau</option>
+      <option>800ml d'eau</option>
+      <option>850ml d'eau</option>
+      <option>900ml d'eau</option>
+      <option>950ml d'eau</option>
+      <option>1L d'eau</option>
+    </datalist>
+
+    <!-- Interface -->
+    <h1>🥘 Kwikook</h1>
+    <h2>Entrez vos ingredients</h2>
+    <form id="ingredients">
+      <fieldset>
+        <legend>Matière grasse</legend>
+        <input
+          type="text"
+          id="matiere-grasse"
+          name="matiere-grasse"
+          list="liste-matiere-grasse"
+        />
+        <input type="button" id="hasard-matiere-grasse" value="Au hasard" />
+        <i>Apports en lipides</i>
+      </fieldset>
+      <fieldset>
+        <legend>Féculent</legend>
+        <input
+          type="text"
+          id="feculent"
+          name="feculent"
+          list="liste-feculent"
+        />
+        <input type="button" id="hasard-feculent" value="Au hasard" />
+        <i>Apports en glucides et en protéines</i>
+      </fieldset>
+      <fieldset>
+        <legend>Légumineuse ou viande</legend>
+        <input
+          type="text"
+          id="legumineuse-ou-viande"
+          name="legumineuse-ou-viande"
+          list="liste-legumineuse-ou-viande"
+        />
+        <input
+          type="button"
+          id="hasard-legumineuse-ou-viande"
+          value="Au hasard"
+        />
+        <i>Apports en protéines et lipides</i>
+      </fieldset>
+      <fieldset>
+        <legend>Légume ou fruit</legend>
+        <input
+          type="text"
+          id="legume-ou-fruit"
+          name="legume-ou-fruit"
+          list="liste-legume-ou-fruit"
+        />
+        <input type="button" id="hasard-legume-ou-fruit" value="Au hasard" />
+        <i>Apports en nutriments et fibres</i>
+      </fieldset>
+      <fieldset>
+        <legend>Liant</legend>
+        <input type="text" id="liant" name="liant" list="liste-liant" />
+        <input type="button" id="hasard-liant" value="Au hasard" />
+      </fieldset>
+      <fieldset>
+        <legend>Quantité d'eau</legend>
+        <input type="text" id="eau" name="eau" list="liste-eau" />
+        <i>
+          Généralement 3 fois le volume de féculent, ou bien tout juste de quoi
+          immerger les ingrédients
+        </i>
+      </fieldset>
+      <fieldset>
+        <legend>Pour le goût :</legend>
+        <div>
+          <input
+            type="checkbox"
+            id="bouillon-legume"
+            name="pour-le-gout"
+            value="bouillon-legume"
+          />
+          <label for="coding">Bouillon de légumes</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="bouillon-volaille"
+            name="pour-le-gout"
+            value="bouillon-volaille"
+          />
+          <label for="coding">Bouillon de volaille</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="echalotte"
+            name="pour-le-gout"
+            value="echalotte"
+          />
+          <label for="coding">Echalotte</label>
+        </div>
+        <div>
+          <input type="checkbox" id="ail" name="pour-le-gout" value="ail" />
+          <label for="coding">Ail</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="oignon"
+            name="pour-le-gout"
+            value="oignon"
+          />
+          <label for="coding">Oignon</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="citron"
+            name="pour-le-gout"
+            value="citron"
+          />
+          <label for="coding">Citron</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="sauce-soja"
+            name="pour-le-gout"
+            value="sauce-soja"
+          />
+          <label for="coding">Sauce soja</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="ciboulette"
+            name="pour-le-gout"
+            value="ciboulette"
+          />
+          <label for="coding">Ciboulette</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="romarin"
+            name="pour-le-gout"
+            value="romarin"
+          />
+          <label for="coding">Romarin</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="quatre-epices"
+            name="pour-le-gout"
+            value="quatre-epices"
+          />
+          <label for="coding">Mélange 4 épices</label>
+        </div>
+      </fieldset>
+    </form>
+    <h2>Votre recette</h2>
+    <h3>Liste de courses</h3>
+    <ul id="liste-courses"></ul>
+    <h3>Préparation</h3>
+    <p>
+      Découpez les ingrédients volumineux (pommes de terre, courgette, tomates,
+      etc.) dans la forme de votre choix : en dés, en rondelles, en battonnets,
+      en tagliatelles, etc.
+    </p>
+    <p>
+      Dans une marmitte (fait tout, cocotte, grande casserole, etc.), versez la
+      matière grasse et faites revenir les ingrédients que vous souhaitez cuire
+      à feu vif : echalottes, ail, oignons, certains légumes, etc.
+    </p>
+    <p>
+      Ajouter le reste des ingrédients avec l'eau, laisser cuire jusqu'à ce que
+      les ingrédients soient cuits et n'aient plus trop d'eau (20-40min)
+    </p>
+
+    <!-- Scripts -->
+    <script>
+      // Hasard
+      function addRandomButtonHandler(buttonId, datalistId, inputId) {
+        document.getElementById(buttonId).onclick = () => {
+          const options = document.getElementById(datalistId).options;
+          const selectedOptionIndex = Math.floor(
+            Math.random() * options.length
+          );
+          const selectedOptionText = options[selectedOptionIndex].text;
+          const input = document.getElementById(inputId);
+          input.value = selectedOptionText;
+          input.dispatchEvent(new Event("change", { bubbles: true }));
+        };
+      }
+      addRandomButtonHandler(
+        "hasard-matiere-grasse",
+        "liste-matiere-grasse",
+        "matiere-grasse"
+      );
+      addRandomButtonHandler("hasard-feculent", "liste-feculent", "feculent");
+      addRandomButtonHandler(
+        "hasard-legumineuse-ou-viande",
+        "liste-legumineuse-ou-viande",
+        "legumineuse-ou-viande"
+      );
+      addRandomButtonHandler(
+        "hasard-legume-ou-fruit",
+        "liste-legume-ou-fruit",
+        "legume-ou-fruit"
+      );
+      addRandomButtonHandler("hasard-liant", "liste-liant", "liant");
+      // Liste de courses
+      const listeCourses = document.getElementById("liste-courses");
+      const ingredientsForm = document.forms.ingredients;
+      ingredientsForm.addEventListener("change", function () {
+        const ingredients = new FormData(ingredientsForm);
+        let listeCoursesContent = "";
+        listeCoursesContent += `<li>${ingredients.get(
+          "matiere-grasse"
+        )}</li>\n`;
+        listeCoursesContent += `<li>${ingredients.get("feculent")}</li>\n`;
+        listeCoursesContent += `<li>${ingredients.get(
+          "legumineuse-ou-viande"
+        )}</li>\n`;
+        listeCoursesContent += `<li>${ingredients.get(
+          "legume-ou-fruit"
+        )}</li>\n`;
+        listeCoursesContent += `<li>${ingredients.get("liant")}</li>\n`;
+        listeCoursesContent += `<li>${ingredients.get("eau")}</li>\n`;
+        ingredients.getAll("pour-le-gout").forEach((ingredient) => {
+          listeCoursesContent += `<li>${ingredient}</li>\n`;
+        });
+        listeCourses.innerHTML = listeCoursesContent;
+      });
+    </script>
+  </body>
+</html>
