@@ -159,34 +159,46 @@
       <option>Pommes de terre (8)</option>
       <option>Nouilles chinoises (TODO)</option>
       <option>Patates douces (2 grosses, 1kg - 1,2kg)</option>
+      <option>Raisins secs (200g)</option>
+      <option>Petit épeautre (250g)</option>
     </datalist>
     <datalist id="liste-legumineuse-ou-viande">
-      <option>Saumon fumé</option>
-      <option>Haricots rouges</option>
-      <option>Oeufs</option>
-      <option>Dés de jambon</option>
-      <option>Sauté de porc</option>
-      <option>Lardons</option>
-      <option>Lentilles corail</option>
-      <option>Pois chiche</option>
+      <option>Saumon fumé (140g)</option>
+      <option>Haricots rouges (200g)</option>
+      <option>Oeufs (2)</option>
+      <option>Dés de jambon (120g)</option>
+      <option>Sauté de porc (1kg)</option>
+      <option>Lardons (200g)</option>
+      <option>Lentilles corail (TODO)</option>
+      <option>Pois chiche (TODO)</option>
+      <option>Thon (115g)</option>
+      <option>Feta (200g)</option>
+      <option>Ricotta (250g)</option>
     </datalist>
     <datalist id="liste-legume-ou-fruit">
-      <option>Tomates concassées</option>
-      <option>Tomates cerises</option>
-      <option>Courgette</option>
-      <option>Maïs</option>
-      <option>Petits pois</option>
-      <option>Carottes</option>
-      <option>Pommes</option>
-      <option>Pruneaux</option>
-      <option>Poire</option>
+      <option>Tomates concassées, pulpe de tomate (400g)</option>
+      <option>Tomates cerises (120g)</option>
+      <option>Courgette (1)</option>
+      <option>Maïs (140g)</option>
+      <option>Petits pois (70g)</option>
+      <option>Carottes (8)</option>
+      <option>Pommes (4)</option>
+      <option>Pruneaux (TODO)</option>
+      <option>Poire (TODO)</option>
+      <option>Courge butternut (1)</option>
+      <option>Chou fleur (1)</option>
+      <option>Brocoli (1)</option>
+      <option>Betteraves (4)</option>
     </datalist>
     <datalist id="liste-liant">
-      <option>Lait</option>
-      <option>Yaourt brassé</option>
-      <option>Lait de coco</option>
-      <option>Crème fraiche</option>
-      <option>Cidre</option>
+      <option>Lait (TODO)</option>
+      <option>Yaourt brassé (1)</option>
+      <option>Lait de coco (20cl)</option>
+      <option>Crème fraiche (20cl)</option>
+      <option>Cidre (2 verres)</option>
+      <option>Tomates concassées, pulpe de tomate (400g)</option>
+      <option>Moutarde à l'ancienne (petit pot)</option>
+      <option>Tomacouli (400g)</option>
     </datalist>
     <datalist id="liste-eau">
       <option>Pas d'eau</option>
@@ -284,7 +296,7 @@
             name="pour-le-gout"
             value="bouillon-legume"
           />
-          <label for="coding">Bouillon de légumes</label>
+          <label for="bouillon-legume">Bouillon de légumes (1)</label>
         </div>
         <div>
           <input
@@ -293,7 +305,7 @@
             name="pour-le-gout"
             value="bouillon-volaille"
           />
-          <label for="coding">Bouillon de volaille</label>
+          <label for="bouillon-volaille">Bouillon de volaille (1)</label>
         </div>
         <div>
           <input
@@ -302,11 +314,11 @@
             name="pour-le-gout"
             value="echalotte"
           />
-          <label for="coding">Echalotte</label>
+          <label for="echalotte">Echalotte (4)</label>
         </div>
         <div>
           <input type="checkbox" id="ail" name="pour-le-gout" value="ail" />
-          <label for="coding">Ail</label>
+          <label for="ail">Ail (2)</label>
         </div>
         <div>
           <input
@@ -315,7 +327,7 @@
             name="pour-le-gout"
             value="oignon"
           />
-          <label for="coding">Oignon</label>
+          <label for="oignon">Oignon (2)</label>
         </div>
         <div>
           <input
@@ -324,7 +336,7 @@
             name="pour-le-gout"
             value="citron"
           />
-          <label for="coding">Citron</label>
+          <label for="citron">Citron (150ml)</label>
         </div>
         <div>
           <input
@@ -333,7 +345,7 @@
             name="pour-le-gout"
             value="sauce-soja"
           />
-          <label for="coding">Sauce soja</label>
+          <label for="sauce-soja">Sauce soja (4 càs)</label>
         </div>
         <div>
           <input
@@ -342,7 +354,7 @@
             name="pour-le-gout"
             value="ciboulette"
           />
-          <label for="coding">Ciboulette</label>
+          <label for="ciboulette">Ciboulette</label>
         </div>
         <div>
           <input
@@ -351,7 +363,7 @@
             name="pour-le-gout"
             value="romarin"
           />
-          <label for="coding">Romarin</label>
+          <label for="romarin">Romarin</label>
         </div>
         <div>
           <input
@@ -360,12 +372,53 @@
             name="pour-le-gout"
             value="quatre-epices"
           />
-          <label for="coding">Mélange 4 épices</label>
+          <label for="quatre-epices">Mélange 4 épices</label>
+        </div>
+        <div>
+          <input type="checkbox" id="cumin" name="pour-le-gout" value="cumin" />
+          <label for="cumin">Cumin</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="origan"
+            name="pour-le-gout"
+            value="origan"
+          />
+          <label for="origan">Origan (1 pincée)</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="parmesan"
+            name="pour-le-gout"
+            value="parmesan"
+          />
+          <label for="parmesan">Parmesan</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="moutarde"
+            name="pour-le-gout"
+            value="moutarde"
+          />
+          <label for="moutarde">Moutarde (1 grosse cuillère à soupe)</label>
+        </div>
+        <div>
+          <input
+            type="checkbox"
+            id="croutons"
+            name="pour-le-gout"
+            value="croutons"
+          />
+          <label for="croutons">Croutons</label>
         </div>
       </fieldset>
     </form>
     <h2>Votre recette</h2>
-    <h3>Liste de courses</h3>
+    <h3>Liste de courses (pour 4 personnes)</h3>
+    <i>Les quantités sont données à titre indicatif</i>
     <ul id="liste-courses"></ul>
     <h3>Préparation</h3>
     <p>
